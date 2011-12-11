@@ -5,7 +5,7 @@
 
   $.extend($.charcounter, {
     options: {
-      watching: '',
+      watch: '',
       displayTarget: '',
       onUpdate: function(count){
         console.log('not implemented')
@@ -14,7 +14,7 @@
     init: function(options){
       $.extend($.charcounter.options, options)
       var $cc = $.charcounter;
-      $($cc.options.watching).keyup($cc.onKeyup)
+      $($cc.options.watch).keyup($cc.onKeyup)
     },
 
     onKeyup: function(){

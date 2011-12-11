@@ -7,6 +7,6 @@ A simple way to monitor the number of characters in a given input field.
         $.charcounter({
                        watch: '#some-text-field',
                        onUpdate: function(count){
-                         console.log('there are '+count+' in #some-text-field'
+                         console.log('there are '+count+' characters in #some-text-field'
                        }
                       })

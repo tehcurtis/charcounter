@@ -1,29 +1,20 @@
-(function($){
-  $.charcounter = function(options){
-    $.charcounter.init(options);
-  };
+(function(window, document, undefined){
 
-  $.extend($.charcounter, {
-    options: {
-      watch: '',
-      displayTarget: '',
-      onUpdate: function(count){
-        console.log('not implemented')
-      }
-    },
-    init: function(options){
-      $.extend($.charcounter.options, options)
-      var $cc = $.charcounter;
-      $($cc.options.watch).keyup($cc.onKeyup)
-    },
+  var CharCounter = function(options){
+    var _fieldToWatch = document.getElementById(options.fieldToWatch),
+        _counterDisplay = document.getElementById(options.counterDisplay),
+        _count = 0;
 
-    onKeyup: function(){
-      var $cc = $.charcounter;
-      var count = $(this).val().length;
-      console.log($cc.displayTarget)
-      $($cc.options.displayTarget).html(count)
-      $cc.options.onUpdate(count)
+    function updateCount(event){
+      var currentLength = _fieldToWatch.value.length;
+
+      _counterDisplay.innerHTML = currentLength;
     }
 
-  })
-})(jQuery);
+    _fieldToWatch.addEventListener('keyup', updateCount, false)
+  }
+
+  // expose CharCounter to the world
+  window.CharCounter = CharCounter
+
+})(window, document)
